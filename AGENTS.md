@@ -28,3 +28,11 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- App data (groups, students, criteria, attendance, participations) is read and written from the browser with the generated Supabase client under RLS owner policies (`user_id = auth.uid()`); there are no server functions. Why: single-teacher app, RLS is the security boundary.
+- All signed-in pages live under `src/routes/_authenticated/` (client-only, `ssr: false`) and share `AppShell`; `/`, `/auth`, `/reset-password` are public.
+- Query factories and the paged `fetchAll` helper live in `src/lib/db.ts`; reuse them so long periods are never cut at the 1000-row API limit.
+- Stats math lives in `src/lib/stats.ts`, CSV parsing in `src/lib/csv.ts`, PDF generation (jspdf, dynamically imported) in `src/lib/pdf.ts`; each pure module has tests in `src/test/`.
+- Participations snapshot `criterion_name` and `points` at insert time so editing or deleting a criterion never rewrites history.
