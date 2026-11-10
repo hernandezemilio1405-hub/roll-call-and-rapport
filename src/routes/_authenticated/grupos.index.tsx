@@ -100,7 +100,7 @@ function NewGroupDialog() {
       setName("");
       setGrade("");
     },
-    onError: (e) => toast.error(e instanceof z.ZodError ? e.issues[0].message : errorMessage(e)),
+    onError: (e) => toast.error(e instanceof z.ZodError ? e.issues[0]?.message ?? "Datos no válidos" : errorMessage(e)),
   });
 
   return (

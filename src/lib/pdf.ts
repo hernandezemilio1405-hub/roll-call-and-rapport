@@ -11,7 +11,7 @@ interface ReportInput {
   attendance: Attendance[];
   participations: Participation[];
   /** Si se indica, el reporte es individual. */
-  student?: Student;
+  student?: Student | undefined;
 }
 
 const STATUS_LABEL: Record<string, string> = {
@@ -86,7 +86,7 @@ export async function downloadReportPdf(input: ReportInput) {
       startY: y + 8,
       head: [["Fecha", "Estado"]],
       body: att.length
-        ? [...att].sort((a, b) => a.date.localeCompare(b.date)).map((a) => [formatShort(a.date), STATUS_LABEL[a.status]])
+        ? [...att].sort((a, b) => a.date.localeCompare(b.date)).map((a) => [formatShort(a.date), STATUS_LABEL[a.status] ?? a.status])
         : [["Sin registros en el periodo", ""]],
       theme: "striped",
       headStyles: { fillColor: INK, textColor: PAPER },

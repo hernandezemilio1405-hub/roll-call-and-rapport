@@ -275,10 +275,10 @@ function StudentsTab({ groupId, students }: { groupId: string; students: Student
     const file = e.target.files?.[0];
     e.target.value = "";
     if (!file) return;
-    if (file.size > 2_000_000) return toast.error("El archivo es demasiado grande (máx. 2 MB)");
+    if (file.size > 2_000_000) { toast.error("El archivo es demasiado grande (máx. 2 MB)"); return; }
     const rows = parseStudentsCsv(await file.text());
-    if (rows.length === 0) return toast.error("No encontramos alumnos en el archivo");
-    if (rows.length > 500) return toast.error("Máximo 500 alumnos por archivo");
+    if (rows.length === 0) { toast.error("No encontramos alumnos en el archivo"); return; }
+    if (rows.length > 500) { toast.error("Máximo 500 alumnos por archivo"); return; }
     setPreview(rows);
   }
 

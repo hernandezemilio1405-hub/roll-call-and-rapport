@@ -13,12 +13,12 @@ describe("importación de alumnos por CSV", () => {
   it("sin encabezados usa nombre, matrícula y correo en ese orden", () => {
     const rows = parseStudentsCsv("Ana López,A001\nLuis Pérez,A002");
     expect(rows.map((r) => r.full_name)).toEqual(["Ana López", "Luis Pérez"]);
-    expect(rows[1].student_code).toBe("A002");
+    expect(rows[1]?.student_code).toBe("A002");
   });
 
   it("une nombres y apellidos cuando vienen separados", () => {
     const rows = parseStudentsCsv("Nombres,Apellido paterno,Apellido materno\nAna,López,Ruiz");
-    expect(rows[0].full_name).toBe("Ana López Ruiz");
+    expect(rows[0]?.full_name).toBe("Ana López Ruiz");
   });
 
   it("omite filas sin nombre y correos inválidos", () => {

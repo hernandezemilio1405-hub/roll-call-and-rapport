@@ -88,7 +88,7 @@ function AuthPage() {
     e.preventDefault();
     const parsed = credsSchema.safeParse({ email, password });
     if (!parsed.success) {
-      toast.error(parsed.error.issues[0].message);
+      toast.error(parsed.error.issues[0]?.message ?? "Datos no válidos");
       return;
     }
     setBusy(true);
@@ -117,13 +117,13 @@ function AuthPage() {
   async function sendReset(e: React.FormEvent) {
     e.preventDefault();
     const parsed = z.string().trim().email().safeParse(email);
-    if (!parsed.success) return toast.error("Escribe un correo válido");
+    if (!parsed.success) { toast.error("Escribe un correo válido"); return; }
     setBusy(true);
     const { error } = await supabase.auth.resetPasswordForEmail(parsed.data, {
       redirectTo: `${window.location.origin}/reset-password`,
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Te enviamos un enlace para restablecer tu contraseña");
     setForgot(false);
   }

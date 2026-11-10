@@ -33,7 +33,7 @@ export function parseStudentsCsv(text: string): ImportedStudent[] {
   const rows = result.data.filter((r) => r.some((c) => c && c.trim()));
   if (rows.length === 0) return [];
 
-  const header = rows[0].map((c) => c ?? "");
+  const header = rows[0]!.map((c) => c ?? "");
   const known = [...NAME_KEYS, ...CODE_KEYS, ...EMAIL_KEYS, ...FIRST_KEYS, ...LAST_KEYS, ...LAST2_KEYS];
   const hasHeader = header.some((h) => known.includes(norm(h)));
 

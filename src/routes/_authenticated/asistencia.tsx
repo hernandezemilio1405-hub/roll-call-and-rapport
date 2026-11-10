@@ -96,7 +96,7 @@ function AttendancePage() {
   });
 
   const set = (id: string, st: AttendanceStatus) => setOverrides((o) => ({ ...o, [id]: st }));
-  const cycle = (id: string) => set(id, ORDER[(ORDER.indexOf(statusOf(id)) + 1) % ORDER.length]);
+  const cycle = (id: string) => set(id, ORDER[(ORDER.indexOf(statusOf(id)) + 1) % ORDER.length]!);
 
   if (groups.length === 0) {
     return (

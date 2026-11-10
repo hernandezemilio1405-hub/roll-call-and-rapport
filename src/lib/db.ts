@@ -95,8 +95,8 @@ export const criteriaQuery = () =>
   });
 
 interface RangeFilter {
-  groupId?: string;
-  studentId?: string;
+  groupId?: string | undefined;
+  studentId?: string | undefined;
   from: string;
   to: string;
 }
