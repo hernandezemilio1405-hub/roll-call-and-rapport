@@ -86,7 +86,7 @@ function StudentPage() {
             <div className="paper-card divide-y">
               {att.data!.map((a) => (
                 <div key={a.id} className="flex items-center justify-between px-4 py-3 text-sm">
-                  <span className="capitalize">{formatLong(a.date)}</span>
+                  <span className="">{formatLong(a.date)}</span>
                   <StatusBadge status={a.status} />
                 </div>
               ))}

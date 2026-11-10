@@ -126,7 +126,7 @@ function AttendancePage() {
             className="w-44"
             aria-label="Fecha"
           />
-          <span className="text-sm capitalize text-muted-foreground">{formatLong(date)}</span>
+          <span className="text-sm text-muted-foreground">{formatLong(date)}</span>
           {hasSaved && (
             <span className="rounded-full bg-present-soft px-3 py-1 text-xs font-semibold text-present">
               Lista guardada
@@ -208,7 +208,7 @@ function AttendancePage() {
             })}
           </div>
 
-          <div className="sticky bottom-20 z-20 mt-6 flex justify-end lg:bottom-6">
+          <div className={cn("z-20 mt-6 flex justify-end", (dirty || !hasSaved) && "sticky bottom-20 lg:bottom-6")}>
             <Button size="xl" onClick={() => save.mutate()} disabled={save.isPending || (!dirty && hasSaved)} className="shadow-lift">
               {save.isPending ? <Loader2 className="animate-spin" /> : <Save />}
               {hasSaved ? (dirty ? "Guardar cambios" : "Guardada") : "Guardar lista"}

@@ -503,7 +503,7 @@ function HistoryTab({ groupId, students }: { groupId: string; students: Student[
               {days.map(([date, d]) => (
                 <div key={date} className="paper-card p-4">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <Link to="/asistencia" search={{ grupo: groupId, fecha: date }} className="font-semibold capitalize hover:text-primary">
+                    <Link to="/asistencia" search={{ grupo: groupId, fecha: date }} className="font-semibold hover:text-primary">
                       {formatLong(date)}
                     </Link>
                     <div className="flex gap-3 text-xs font-semibold tabular-nums">

@@ -14,7 +14,8 @@ export function daysAgoISO(days: number): string {
 }
 
 export function formatLong(iso: string): string {
-  return format(parseISO(iso), "EEEE d 'de' MMMM yyyy", { locale: es });
+  const s = format(parseISO(iso), "EEEE d 'de' MMMM yyyy", { locale: es });
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 export function formatShort(iso: string): string {

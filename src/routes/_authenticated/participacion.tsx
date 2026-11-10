@@ -155,7 +155,7 @@ function ParticipationPage() {
             className="w-44"
             aria-label="Fecha"
           />
-          <span className="text-sm capitalize text-muted-foreground">{formatLong(date)}</span>
+          <span className="text-sm text-muted-foreground">{formatLong(date)}</span>
         </div>
       </div>
 
