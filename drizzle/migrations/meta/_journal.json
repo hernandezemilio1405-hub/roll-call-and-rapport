@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794319120060,
+      "tag": "0000_asistencia_participacion_schema",
+      "breakpoints": true
+    }
+  ]
+}

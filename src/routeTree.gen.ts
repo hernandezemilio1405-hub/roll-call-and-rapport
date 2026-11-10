@@ -10,33 +10,171 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthenticatedAsistenciaRouteImport } from './routes/_authenticated/asistencia'
+import { Route as AuthenticatedCriteriosRouteImport } from './routes/_authenticated/criterios'
+import { Route as AuthenticatedPanelRouteImport } from './routes/_authenticated/panel'
+import { Route as AuthenticatedParticipacionRouteImport } from './routes/_authenticated/participacion'
+import { Route as AuthenticatedReportesRouteImport } from './routes/_authenticated/reportes'
+import { Route as AuthenticatedAlumnosStudentIdRouteImport } from './routes/_authenticated/alumnos.$studentId'
+import { Route as AuthenticatedGruposIndexRouteImport } from './routes/_authenticated/grupos.index'
+import { Route as AuthenticatedGruposGroupIdRouteImport } from './routes/_authenticated/grupos.$groupId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAsistenciaRoute = AuthenticatedAsistenciaRouteImport.update({
+  id: '/asistencia',
+  path: '/asistencia',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCriteriosRoute = AuthenticatedCriteriosRouteImport.update({
+  id: '/criterios',
+  path: '/criterios',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPanelRoute = AuthenticatedPanelRouteImport.update({
+  id: '/panel',
+  path: '/panel',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedParticipacionRoute =
+  AuthenticatedParticipacionRouteImport.update({
+    id: '/participacion',
+    path: '/participacion',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedReportesRoute = AuthenticatedReportesRouteImport.update({
+  id: '/reportes',
+  path: '/reportes',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAlumnosStudentIdRoute =
+  AuthenticatedAlumnosStudentIdRouteImport.update({
+    id: '/alumnos/$studentId',
+    path: '/alumnos/$studentId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGruposIndexRoute =
+  AuthenticatedGruposIndexRouteImport.update({
+    id: '/grupos/',
+    path: '/grupos/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGruposGroupIdRoute =
+  AuthenticatedGruposGroupIdRouteImport.update({
+    id: '/grupos/$groupId',
+    path: '/grupos/$groupId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/asistencia': typeof AuthenticatedAsistenciaRoute
+  '/criterios': typeof AuthenticatedCriteriosRoute
+  '/panel': typeof AuthenticatedPanelRoute
+  '/participacion': typeof AuthenticatedParticipacionRoute
+  '/reportes': typeof AuthenticatedReportesRoute
+  '/alumnos/$studentId': typeof AuthenticatedAlumnosStudentIdRoute
+  '/grupos/$groupId': typeof AuthenticatedGruposGroupIdRoute
+  '/grupos/': typeof AuthenticatedGruposIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/asistencia': typeof AuthenticatedAsistenciaRoute
+  '/criterios': typeof AuthenticatedCriteriosRoute
+  '/panel': typeof AuthenticatedPanelRoute
+  '/participacion': typeof AuthenticatedParticipacionRoute
+  '/reportes': typeof AuthenticatedReportesRoute
+  '/alumnos/$studentId': typeof AuthenticatedAlumnosStudentIdRoute
+  '/grupos/$groupId': typeof AuthenticatedGruposGroupIdRoute
+  '/grupos': typeof AuthenticatedGruposIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/asistencia': typeof AuthenticatedAsistenciaRoute
+  '/_authenticated/criterios': typeof AuthenticatedCriteriosRoute
+  '/_authenticated/panel': typeof AuthenticatedPanelRoute
+  '/_authenticated/participacion': typeof AuthenticatedParticipacionRoute
+  '/_authenticated/reportes': typeof AuthenticatedReportesRoute
+  '/_authenticated/alumnos/$studentId': typeof AuthenticatedAlumnosStudentIdRoute
+  '/_authenticated/grupos/$groupId': typeof AuthenticatedGruposGroupIdRoute
+  '/_authenticated/grupos/': typeof AuthenticatedGruposIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/asistencia'
+    | '/criterios'
+    | '/panel'
+    | '/participacion'
+    | '/reportes'
+    | '/alumnos/$studentId'
+    | '/grupos/$groupId'
+    | '/grupos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/asistencia'
+    | '/criterios'
+    | '/panel'
+    | '/participacion'
+    | '/reportes'
+    | '/alumnos/$studentId'
+    | '/grupos/$groupId'
+    | '/grupos'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/reset-password'
+    | '/_authenticated/asistencia'
+    | '/_authenticated/criterios'
+    | '/_authenticated/panel'
+    | '/_authenticated/participacion'
+    | '/_authenticated/reportes'
+    | '/_authenticated/alumnos/$studentId'
+    | '/_authenticated/grupos/$groupId'
+    | '/_authenticated/grupos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +186,116 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/asistencia': {
+      id: '/_authenticated/asistencia'
+      path: '/asistencia'
+      fullPath: '/asistencia'
+      preLoaderRoute: typeof AuthenticatedAsistenciaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/criterios': {
+      id: '/_authenticated/criterios'
+      path: '/criterios'
+      fullPath: '/criterios'
+      preLoaderRoute: typeof AuthenticatedCriteriosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/panel': {
+      id: '/_authenticated/panel'
+      path: '/panel'
+      fullPath: '/panel'
+      preLoaderRoute: typeof AuthenticatedPanelRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/participacion': {
+      id: '/_authenticated/participacion'
+      path: '/participacion'
+      fullPath: '/participacion'
+      preLoaderRoute: typeof AuthenticatedParticipacionRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/reportes': {
+      id: '/_authenticated/reportes'
+      path: '/reportes'
+      fullPath: '/reportes'
+      preLoaderRoute: typeof AuthenticatedReportesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/alumnos/$studentId': {
+      id: '/_authenticated/alumnos/$studentId'
+      path: '/alumnos/$studentId'
+      fullPath: '/alumnos/$studentId'
+      preLoaderRoute: typeof AuthenticatedAlumnosStudentIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/grupos/': {
+      id: '/_authenticated/grupos/'
+      path: '/grupos'
+      fullPath: '/grupos/'
+      preLoaderRoute: typeof AuthenticatedGruposIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/grupos/$groupId': {
+      id: '/_authenticated/grupos/$groupId'
+      path: '/grupos/$groupId'
+      fullPath: '/grupos/$groupId'
+      preLoaderRoute: typeof AuthenticatedGruposGroupIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAsistenciaRoute: typeof AuthenticatedAsistenciaRoute
+  AuthenticatedCriteriosRoute: typeof AuthenticatedCriteriosRoute
+  AuthenticatedPanelRoute: typeof AuthenticatedPanelRoute
+  AuthenticatedParticipacionRoute: typeof AuthenticatedParticipacionRoute
+  AuthenticatedReportesRoute: typeof AuthenticatedReportesRoute
+  AuthenticatedAlumnosStudentIdRoute: typeof AuthenticatedAlumnosStudentIdRoute
+  AuthenticatedGruposGroupIdRoute: typeof AuthenticatedGruposGroupIdRoute
+  AuthenticatedGruposIndexRoute: typeof AuthenticatedGruposIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAsistenciaRoute: AuthenticatedAsistenciaRoute,
+  AuthenticatedCriteriosRoute: AuthenticatedCriteriosRoute,
+  AuthenticatedPanelRoute: AuthenticatedPanelRoute,
+  AuthenticatedParticipacionRoute: AuthenticatedParticipacionRoute,
+  AuthenticatedReportesRoute: AuthenticatedReportesRoute,
+  AuthenticatedAlumnosStudentIdRoute: AuthenticatedAlumnosStudentIdRoute,
+  AuthenticatedGruposGroupIdRoute: AuthenticatedGruposGroupIdRoute,
+  AuthenticatedGruposIndexRoute: AuthenticatedGruposIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
